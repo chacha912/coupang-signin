@@ -10,3 +10,4 @@ export { default as LinkA } from './LinkA/LinkA';
 export { default as Logo } from './Logo/Logo';
 export { default as SignInedInfo } from './SignInedInfo/SignInedInfo';
 export { default as Tooltip } from './Tooltip/Tooltip';
+export { default as HomeLink } from './HomeLink/HomeLink';
