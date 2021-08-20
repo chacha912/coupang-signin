@@ -7,6 +7,7 @@ import {
   buttonGroup,
   button,
 } from './LoginForm.module.scss';
+import { ReactComponent as ArrowIcon } from 'assets/arrow.svg';
 import classNames from 'classnames';
 import { string, number, object, oneOfType } from 'prop-types';
 import { isValidEmailFormat, isValidPasswordFormat } from 'utils';
@@ -43,6 +44,13 @@ const LoginForm = ({ width, className, style }) => {
           error={{ message: '비밀번호를 입력해주세요.' }}
           style={{ width }}
         />
+        <div className={group}>
+          <AutoSignInCheckbox />
+          <a href="/" className={findLink}>
+            아이디/비밀번호 찾기
+            <ArrowIcon className={findLinkArrow} />
+          </a>
+        </div>
       </fieldset>
     </form>
   );
