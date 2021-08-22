@@ -11,3 +11,4 @@ export { default as Logo } from './Logo/Logo';
 export { default as SignInedInfo } from './SignInedInfo/SignInedInfo';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as HomeLink } from './HomeLink/HomeLink';
+export * from './A11yHidden/A11yHidden';

@@ -1,6 +1,7 @@
 import { page, container, form, copyright } from './SignIn.module.scss';
-import { Logo } from 'components';
+import { HomeLink, Logo } from 'components';
 import { Container } from 'containers';
+import LoginForm from 'containers/LoginForm/LoginForm';
 
 /* -------------------------------------------------------------------------- */
 
@@ -9,7 +10,9 @@ export default function SignInPage() {
     <div className={page}>
       <Container className={container}>
         {/* Logo를 HomeLink 컴포넌트로 감싸야 합니다. */}
-        <Logo />
+        <HomeLink>
+          <Logo />
+        </HomeLink>
 
         {/* 
 					LogInForm 컨테이너 컴포넌트를 이 곳에 포함시킵니다. 
@@ -19,6 +22,7 @@ export default function SignInPage() {
 					- className  { form }
 					- style      { maxWidth: 578 }
 				*/}
+        <LoginForm width="100%" className={form} style={{ maxWidth: 578 }} />
 
         <small lang="en" className={copyright}>
           &copy;Coupang Corp. All rights reserved.

@@ -4,15 +4,17 @@ import 'styles/index.scss';
 
 import { StrictMode, Suspense, lazy } from 'react';
 import { render } from 'react-dom';
+import { SignInPage } from 'pages';
 
-const App = lazy(() => import('./app/App'));
+// const App = lazy(() => import('./app/App'));
 
 /* -------------------------------------------------------------------------- */
 
 render(
   <StrictMode>
     <Suspense fallback={() => <div role="alert">앱 로딩 중...</div>}>
-      <App />
+      {/* <App /> */}
+      <SignInPage />
     </Suspense>
   </StrictMode>,
   document.getElementById('root')
