@@ -50,8 +50,6 @@ class Input extends React.Component {
     return 'text';
   }
 
-  componentDidMount() {}
-
   render() {
     const {
       id,
