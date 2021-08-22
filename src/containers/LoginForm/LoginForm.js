@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   form,
   control,
@@ -20,6 +21,12 @@ import {
 } from 'components';
 
 const LoginForm = ({ width, className, style }) => {
+  const [isCheckedAutoLogin, setIsCheckedAutoLogin]  = useState(false);
+
+  const handleUpdateCheckState = () => {
+    setIsCheckedAutoLogin(!isCheckedAutoLogin)
+  }
+
   return (
     <form className={classNames(form, className)} style={{ ...style, width }}>
       <fieldset>
@@ -43,7 +50,10 @@ const LoginForm = ({ width, className, style }) => {
           error={{ message: '비밀번호를 입력해주세요.' }}
         />
         <div className={group}>
-          <AutoSignInCheckbox />
+          <AutoSignInCheckbox 
+            checked={isCheckedAutoLogin}
+            onChange={handleUpdateCheckState}
+          />
           <a href="/" className={findLink}>
             아이디/비밀번호 찾기
             <ArrowIcon className={findLinkArrow} />
