@@ -26,6 +26,11 @@ const LoginForm = ({ width, className, style }) => {
   const [errorMessageId, setErrorMessageId] = useState(null);
   const [errorMessagePw, setErrorMessagePw] = useState(null);
   const [isFormValidate, setIsFormValidate] = useState(true);
+  const [isCheckedAutoLogin, setIsCheckedAutoLogin] = useState(false);
+
+  const handleUpdateCheckState = () => {
+    setIsCheckedAutoLogin(!isCheckedAutoLogin);
+  };
 
   const handleChangeId = (e) => {
     setUserId(e.target.value);
@@ -88,7 +93,10 @@ const LoginForm = ({ width, className, style }) => {
           error={errorMessagePw && { message: errorMessagePw }}
         />
         <div className={group}>
-          <AutoSignInCheckbox />
+          <AutoSignInCheckbox
+            checked={isCheckedAutoLogin}
+            onChange={handleUpdateCheckState}
+          />
           <a href="/" className={findLink}>
             아이디/비밀번호 찾기
             <ArrowIcon className={findLinkArrow} />
