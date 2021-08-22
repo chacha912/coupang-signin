@@ -32,7 +32,6 @@ const LoginForm = ({ width, className, style }) => {
           placeholder="아이디(이메일)"
           email={true}
           error={{ message: '아이디(이메일)는 이메일 형식으로 입력해주세요.' }}
-          style={{ width }}
         />
         <IconInput
           className={control}
@@ -42,7 +41,6 @@ const LoginForm = ({ width, className, style }) => {
           placeholder="비밀번호"
           password={true}
           error={{ message: '비밀번호를 입력해주세요.' }}
-          style={{ width }}
         />
         <div className={group}>
           <AutoSignInCheckbox />
@@ -50,6 +48,11 @@ const LoginForm = ({ width, className, style }) => {
             아이디/비밀번호 찾기
             <ArrowIcon className={findLinkArrow} />
           </a>
+        </div>
+        <div className={buttonGroup}>
+          <Button className={button}>로그인</Button>
+          <Divider />
+          <Button className={button}>회원가입</Button>
         </div>
       </fieldset>
     </form>
