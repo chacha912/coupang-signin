@@ -62,10 +62,12 @@ class Input extends React.Component {
       placeholder,
       readonly,
       disabled,
+      value: valueProp,
       initialValue,
       initialPasswordVisible,
       focusedSelection,
       mode,
+      handleChange: handleChangeProp,
       error: errorProp,
       className,
       ...restProps
@@ -96,9 +98,9 @@ class Input extends React.Component {
             placeholder={placeholder}
             readOnly={readonly}
             disabled={disabled}
-            value={value}
+            value={valueProp ?? value}
             onFocus={focusedSelection ? this.hanleFocus : null}
-            onChange={this.handleChange}
+            onChange={handleChangeProp ?? this.handleChange}
             {...restProps}
           />
           {password ? (
