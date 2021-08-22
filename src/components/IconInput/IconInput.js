@@ -9,21 +9,25 @@ import { Input } from 'components';
 const IconInput = ({
   icon,
   id,
+  value,
   label,
   email,
   password,
   className,
+  handleChange,
   error,
   ...restProps
 }) => {
   return (
     <Input
       id={id}
+      value={value}
       icon={icon}
       label={label}
       className={classNames(iconInput, className, { [iconInputError]: error })}
       email={email}
       password={password}
+      handleChange={handleChange}
       error={error}
       {...restProps}
     />
