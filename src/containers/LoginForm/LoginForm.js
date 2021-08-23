@@ -10,7 +10,7 @@ import {
 } from './LoginForm.module.scss';
 import { ReactComponent as ArrowIcon } from 'assets/arrow.svg';
 import classNames from 'classnames';
-import { string, number, object, oneOfType } from 'prop-types';
+import { string, number, object, oneOfType, bool } from 'prop-types';
 import { isValidEmailFormat, isValidPasswordFormat } from 'utils';
 import {
   IconInput,
@@ -20,13 +20,13 @@ import {
   A11yHidden,
 } from 'components';
 
-const LoginForm = ({ width, className, style }) => {
-  const [userId, setUserId] = useState(null);
-  const [userPw, setUserPw] = useState(null);
+const LoginForm = ({ width, className, style, id, password, autoLogin }) => {
+  const [userId, setUserId] = useState(id);
+  const [userPw, setUserPw] = useState(password);
   const [errorMessageId, setErrorMessageId] = useState(null);
   const [errorMessagePw, setErrorMessagePw] = useState(null);
-  const [isFormValidate, setIsFormValidate] = useState(true);
-  const [isCheckedAutoLogin, setIsCheckedAutoLogin] = useState(false);
+  const [isFormValidate, setIsFormValidate] = useState(false);
+  const [isCheckedAutoLogin, setIsCheckedAutoLogin] = useState(autoLogin);
 
   const handleUpdateCheckState = () => {
     setIsCheckedAutoLogin(!isCheckedAutoLogin);
@@ -42,7 +42,7 @@ const LoginForm = ({ width, className, style }) => {
 
   useEffect(() => {
     setErrorMessageId(
-      userId === null || isValidEmailFormat(userId)
+      userId === undefined || isValidEmailFormat(userId)
         ? null
         : userId === ''
         ? '아이디(이메일)를 입력해주세요.'
@@ -52,7 +52,7 @@ const LoginForm = ({ width, className, style }) => {
 
   useEffect(() => {
     setErrorMessagePw(
-      userPw === null || isValidPasswordFormat(userPw)
+      userPw === undefined || isValidPasswordFormat(userPw)
         ? null
         : userPw === ''
         ? '비밀번호를 입력해주세요.'
@@ -62,7 +62,7 @@ const LoginForm = ({ width, className, style }) => {
 
   useEffect(() => {
     setIsFormValidate(
-      isValidEmailFormat(userId) && isValidPasswordFormat(userPw) ? false : true
+      isValidEmailFormat(userId) && isValidPasswordFormat(userPw)
     );
   }, [userId, userPw]);
 
@@ -103,7 +103,7 @@ const LoginForm = ({ width, className, style }) => {
           </a>
         </div>
         <div className={buttonGroup}>
-          <Button className={button} disabled={isFormValidate}>
+          <Button className={button} disabled={!isFormValidate}>
             로그인
           </Button>
           <Divider />
@@ -123,6 +123,9 @@ LoginForm.propTypes = {
   className: string,
   /** 사용자 정의 스타일 객체를 설정할 수 있습니다. */
   style: object,
+  id: string,
+  password: string,
+  autoLogin: bool,
 };
 
 export default LoginForm;
